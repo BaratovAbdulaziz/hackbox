@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wireshark - Network Protocol Analyzer | HackBox.Space</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%232563eb'><path d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z'/></svg>">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="../index.html" style="text-decoration: none; color: inherit;">
+                        <h1>HackBox.Space</h1>
+                        <span>Ethical Hacking Tools Encyclopedia</span>
+                    </a>
+                </div>
+                <div class="search-container">
+                    <input type="text" id="searchInput" placeholder="Search tools..." class="search-input">
+                    <div id="searchResults" class="search-results"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="wiki-header">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../index.html">Home</a> > <a href="../index.html#wireless">Wireless & Network Security</a> > Wireshark
+            </div>
+            <h1 class="wiki-title">Wireshark</h1>
+            <p class="wiki-subtitle">The world's foremost network protocol analyzer</p>
+        </div>
+    </div>
+
+    <main class="main">
+        <div class="container">
+            <div class="wiki-content">
+                <div class="content-main">
+                    <h2>Overview</h2>
+                    <p>Wireshark is a free and open-source packet analyzer used for network troubleshooting, analysis, software and communications protocol development, and education. It allows users to see what's happening on their network at a microscopic level and is the de facto standard across many commercial and non-profit enterprises, government agencies, and educational institutions.</p>
+
+                    <div class="info-box">
+                        <h4>Key Information</h4>
+                        <ul>
+                            <li><strong>Developer:</strong> Wireshark Foundation</li>
+                            <li><strong>License:</strong> GPL-2.0</li>
+                            <li><strong>Platform:</strong> Cross-platform (Linux, Windows, macOS)</li>
+                            <li><strong>Language:</strong> C, C++</li>
+                            <li><strong>First Release:</strong> 1998 (originally as Ethereal)</li>
+                        </ul>
+                    </div>
+
+                    <h2>Key Features</h2>
+                    <ul>
+                        <li><strong>Live Capture:</strong> Real-time packet capture and analysis</li>
+                        <li><strong>Deep Inspection:</strong> Detailed protocol analysis for 3000+ protocols</li>
+                        <li><strong>Cross-Platform:</strong> Runs on Windows, Linux, macOS, and more</li>
+                        <li><strong>Rich VoIP Analysis:</strong> Voice over IP call analysis</li>
+                        <li><strong>Export Capabilities:</strong> Save data in multiple formats</li>
+                        <li><strong>Coloring Rules:</strong> Visual packet classification</li>
+                        <li><strong>Advanced Filtering:</strong> Powerful display and capture filters</li>
+                        <li><strong>Statistics:</strong> Comprehensive network statistics and graphs</li>
+                    </ul>
+
+                    <h2>Interface Components</h2>
+
+                    <h3>Packet List Pane</h3>
+                    <p>Shows all captured packets in a list format with basic information like time, source, destination, protocol, and summary.</p>
+
+                    <h3>Packet Details Pane</h3>
+                    <p>Displays the protocol tree of the selected packet, showing detailed information about each protocol layer.</p>
+
+                    <h3>Packet Bytes Pane</h3>
+                    <p>Shows the raw hexadecimal and ASCII dump of the packet data.</p>
+
+                    <h2>Capture Filters</h2>
+                    <p>Applied during packet capture to limit what packets are captured.</p>
+                    <div class="code-block">
+                        <pre># Capture only HTTP traffic
+port 80
+
+# Capture traffic for specific host
+host 192.168.1.100
+
+# Capture traffic between two hosts
+host 192.168.1.100 and host 192.168.1.200
+
+# Capture only TCP traffic
+tcp
+
+# Capture traffic on specific network
+net 192.168.1.0/24
+
+# Capture traffic not from specific host
+not host 192.168.1.1
+
+# Capture specific port range
+portrange 1000-2000</pre>
+                    </div>
+
+                    <h2>Display Filters</h2>
+                    <p>Applied after capture to filter the displayed packets.</p>
+                    <div class="code-block">
+                        <pre># HTTP requests only
+http.request
+
+# Specific IP address
+ip.addr == 192.168.1.100
+
+# Source IP filter
+ip.src == 192.168.1.100
+
+# Destination IP filter
+ip.dst == 192.168.1.100
+
+# Protocol filters
+tcp
+udp
+dns
+arp
+
+# Port filters
+tcp.port == 80
+udp.port == 53
+
+# Combination filters
+http and ip.addr == 192.168.1.100
+tcp.port == 80 or tcp.port == 443
+
+# Pattern matching
+http.request.uri contains "login"
+http.user_agent contains "Mozilla"</pre>
+                    </div>
+
+                    <h2>Common Analysis Tasks</h2>
+
+                    <h3>HTTP Analysis</h3>
+                    <div class="code-block">
+                        <pre># Follow HTTP stream
+Right-click packet > Follow > HTTP Stream
+
+# Export HTTP objects
+File > Export Objects > HTTP
+
+# View HTTP statistics
+Statistics > HTTP > Requests
+
+# Filter for HTTP errors
+http.response.code >= 400</pre>
+                    </div>
+
+                    <h3>DNS Analysis</h3>
+                    <div class="code-block">
+                        <pre># DNS queries
+dns.flags.response == 0
+
+# DNS responses
+dns.flags.response == 1
+
+# DNS query for specific domain
+dns.qry.name contains "example.com"
+
+# DNS statistics
+Statistics > DNS</pre>
+                    </div>
+
+                    <h3>TCP Analysis</h3>
+                    <div class="code-block">
+                        <pre># TCP connection issues
+tcp.analysis.flags
+
+# TCP retransmissions
+tcp.analysis.retransmission
+
+# TCP reset packets
+tcp.flags.reset == 1
+
+# TCP SYN packets
+tcp.flags.syn == 1 and tcp.flags.ack == 0
+
+# Follow TCP stream
+Right-click packet > Follow > TCP Stream</pre>
+                    </div>
+
+                    <h2>Security Analysis</h2>
+
+                    <h3>Detecting Suspicious Activity</h3>
+                    <div class="code-block">
+                        <pre># Large packet sizes (potential data exfiltration)
+frame.len > 1500
+
+# Unusual protocols
+not (tcp or udp or icmp or arp)
+
+# High frequency connections
+Statistics > Conversations > TCP
+
+# Password transmission (unencrypted)
+http.request.method == "POST" and http contains "password"</pre>
+                    </div>
+
+                    <h3>Wireless Security Analysis</h3>
+                    <div class="code-block">
+                        <pre># 802.11 management frames
+wlan.fc.type == 0
+
+# 802.11 beacon frames
+wlan.fc.subtype == 8
+
+# 802.11 deauth frames
+wlan.fc.subtype == 12
+
+# WPA handshake
+eapol and wlan.addr contains "target_mac"</pre>
+                    </div>
+
+                    <h2>Advanced Features</h2>
+
+                    <h3>Expert System</h3>
+                    <p>Automatically detects common network problems and provides analysis.</p>
+                    <div class="code-block">
+                        <pre># Access expert information
+Analyze > Expert Info
+
+# Common expert warnings:
+- TCP retransmissions
+- TCP out-of-order packets
+- TCP duplicate ACKs
+- Malformed packets</pre>
+                    </div>
+
+                    <h3>Statistics and Graphs</h3>
+                    <div class="code-block">
+                        <pre># Protocol hierarchy
+Statistics > Protocol Hierarchy
+
+# Conversations analysis
+Statistics > Conversations
+
+# I/O graphs
+Statistics > I/O Graphs
+
+# Flow graphs
+Statistics > Flow Graph</pre>
+                    </div>
+
+                    <h3>VoIP Analysis</h3>
+                    <div class="code-block">
+                        <pre># VoIP calls
+Telephony > VoIP Calls
+
+# RTP analysis
+Telephony > RTP > RTP Streams
+
+# Play VoIP audio
+Telephony > RTP > RTP Player</pre>
+                    </div>
+
+                    <h2>Command Line Tools</h2>
+
+                    <h3>TShark (Terminal Wireshark)</h3>
+                    <div class="code-block">
+                        <pre># Basic capture
+tshark -i eth0
+
+# Capture to file
+tshark -i eth0 -w capture.pcap
+
+# Read from file with filter
+tshark -r capture.pcap -Y "http"
+
+# Display specific fields
+tshark -r capture.pcap -T fields -e ip.src -e ip.dst -e http.request.uri
+
+# JSON output
+tshark -r capture.pcap -T json</pre>
+                    </div>
+
+                    <h3>Dumpcap</h3>
+                    <div class="code-block">
+                        <pre># List interfaces
+dumpcap -D
+
+# Basic capture
+dumpcap -i eth0 -w capture.pcap
+
+# Ring buffer capture
+dumpcap -i eth0 -w capture.pcap -b files:5 -b filesize:100000</pre>
+                    </div>
+
+                    <h2>File Formats and Export</h2>
+                    <div class="code-block">
+                        <pre># Supported capture formats:
+- .pcap (libpcap)
+- .pcapng (next generation)
+- .cap (Microsoft Network Monitor)
+
+# Export options:
+- Plain text
+- CSV
+- JSON
+- XML
+- C Arrays</pre>
+                    </div>
+
+                    <div class="warning">
+                        <h4>⚠️ Legal and Ethical Considerations</h4>
+                        <p>Packet capture can reveal sensitive information including passwords, personal data, and confidential communications. Only capture network traffic on networks you own or have explicit permission to monitor. Be aware of privacy laws and regulations in your jurisdiction when using packet analysis tools.</p>
+                    </div>
+
+                    <h2>Best Practices</h2>
+                    <ol>
+                        <li><strong>Use appropriate filters</strong> to focus on relevant traffic</li>
+                        <li><strong>Save captures regularly</strong> to avoid data loss</li>
+                        <li><strong>Use coloring rules</strong> to visually identify different traffic types</li>
+                        <li><strong>Enable name resolution carefully</strong> as it can slow analysis</li>
+                        <li><strong>Learn keyboard shortcuts</strong> for efficient navigation</li>
+                        <li><strong>Use ring buffer captures</strong> for long-term monitoring</li>
+                        <li><strong>Validate findings</strong> with multiple analysis methods</li>
+                        <li><strong>Document analysis methodology</strong> for reports</li>
+                    </ol>
+
+                    <h2>Common Use Cases</h2>
+                    <ul>
+                        <li><strong>Network Troubleshooting:</strong> Identifying connectivity issues</li>
+                        <li><strong>Security Analysis:</strong> Detecting malicious activity</li>
+                        <li><strong>Protocol Development:</strong> Testing new network protocols</li>
+                        <li><strong>Performance Analysis:</strong> Identifying network bottlenecks</li>
+                        <li><strong>Forensics:</strong> Investigating security incidents</li>
+                        <li><strong>Education:</strong> Learning network protocols</li>
+                        <li><strong>Compliance:</strong> Monitoring regulatory requirements</li>
+                    </ul>
+
+                    <h2>Integration with Other Tools</h2>
+                    <ul>
+                        <li><strong>tcpdump:</strong> Command-line packet capture</li>
+                        <li><strong>Nmap:</strong> Network discovery and port scanning</li>
+                        <li><strong>NetworkMiner:</strong> Network forensic analysis</li>
+                        <li><strong>Snort/Suricata:</strong> Intrusion detection systems</li>
+                        <li><strong>Bro/Zeek:</strong> Network security monitoring</li>
+                    </ul>
+                </div>
+
+                <div class="sidebar">
+                    <h3>Quick Navigation</h3>
+                    <ul>
+                        <li><a href="#overview">Overview</a></li>
+                        <li><a href="#features">Key Features</a></li>
+                        <li><a href="#filters">Filters</a></li>
+                        <li><a href="#analysis">Analysis Tasks</a></li>
+                        <li><a href="#best-practices">Best Practices</a></li>
+                    </ul>
+
+                    <h3>Related Tools</h3>
+                    <ul>
+                        <li><a href="aircrack-ng.html">Aircrack-ng</a></li>
+                        <li><a href="kismet.html">Kismet</a></li>
+                        <li><a href="bettercap.html">Bettercap</a></li>
+                        <li><a href="scapy.html">Scapy</a></li>
+                    </ul>
+
+                    <h3>Categories</h3>
+                    <ul>
+                        <li><a href="../index.html#wireless">Wireless & Network Security</a></li>
+                        <li><a href="../index.html#forensics">Forensics</a></li>
+                    </ul>
+
+                    <div class="info-box">
+                        <h4>Quick Stats</h4>
+                        <ul>
+                            <li><strong>Difficulty:</strong> Medium</li>
+                            <li><strong>Platform:</strong> Cross-platform</li>
+                            <li><strong>Cost:</strong> Free</li>
+                            <li><strong>Learning Curve:</strong> Moderate</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 HackBox.Space - Educational purposes only. Always follow ethical hacking guidelines.</p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>

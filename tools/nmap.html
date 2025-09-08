@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nmap - Network Mapper | HackBox.Space</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%232563eb'><path d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z'/></svg>">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="../index.html" style="text-decoration: none; color: inherit;">
+                        <h1>HackBox.Space</h1>
+                        <span>Ethical Hacking Tools Encyclopedia</span>
+                    </a>
+                </div>
+                <div class="search-container">
+                    <input type="text" id="searchInput" placeholder="Search tools..." class="search-input">
+                    <div id="searchResults" class="search-results"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="wiki-header">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../index.html">Home</a> > <a href="../index.html#recon">Reconnaissance</a> > Nmap
+            </div>
+            <h1 class="wiki-title">Nmap (Network Mapper)</h1>
+            <p class="wiki-subtitle">The ultimate network discovery and security auditing tool</p>
+        </div>
+    </div>
+
+    <main class="main">
+        <div class="container">
+            <div class="wiki-content">
+                <div class="content-main">
+                    <h2>Overview</h2>
+                    <p>Nmap ("Network Mapper") is a free and open-source utility for network discovery and security auditing. It was created by Gordon Lyon (also known by his pseudonym Fyodor Vaskovich) and is used to discover hosts and services on a computer network by sending packets and analyzing the responses.</p>
+
+                    <div class="info-box">
+                        <h4>Key Information</h4>
+                        <ul>
+                            <li><strong>Developer:</strong> Gordon Lyon (Fyodor)</li>
+                            <li><strong>License:</strong> GPL-2.0</li>
+                            <li><strong>Platform:</strong> Cross-platform (Linux, Windows, macOS)</li>
+                            <li><strong>Language:</strong> C, C++, Python, Lua</li>
+                            <li><strong>First Release:</strong> September 1997</li>
+                        </ul>
+                    </div>
+
+                    <h2>Features</h2>
+                    <ul>
+                        <li><strong>Host Discovery:</strong> Identify live hosts on a network</li>
+                        <li><strong>Port Scanning:</strong> Determine which ports are open on target systems</li>
+                        <li><strong>Service Detection:</strong> Identify services running on open ports</li>
+                        <li><strong>OS Detection:</strong> Determine the operating system of target hosts</li>
+                        <li><strong>Scriptable Interaction:</strong> NSE (Nmap Scripting Engine) for advanced tasks</li>
+                        <li><strong>Stealth Scanning:</strong> Various scan techniques to avoid detection</li>
+                        <li><strong>IPv6 Support:</strong> Full IPv6 scanning capabilities</li>
+                        <li><strong>Timing Controls:</strong> Adjust scan speed and timing</li>
+                    </ul>
+
+                    <h2>Common Usage Examples</h2>
+
+                    <h3>Basic Host Discovery</h3>
+                    <div class="code-block">
+                        <pre># Ping scan to discover live hosts
+nmap -sn 192.168.1.0/24
+
+# Scan specific IP range
+nmap -sn 192.168.1.1-20</pre>
+                    </div>
+
+                    <h3>Port Scanning</h3>
+                    <div class="code-block">
+                        <pre># TCP SYN scan (default)
+nmap -sS target.com
+
+# TCP connect scan
+nmap -sT target.com
+
+# UDP scan
+nmap -sU target.com
+
+# Scan specific ports
+nmap -p 22,80,443 target.com
+
+# Scan port range
+nmap -p 1-1000 target.com
+
+# Scan all ports
+nmap -p- target.com</pre>
+                    </div>
+
+                    <h3>Service and OS Detection</h3>
+                    <div class="code-block">
+                        <pre># Service version detection
+nmap -sV target.com
+
+# OS detection
+nmap -O target.com
+
+# Aggressive scan (OS, version, scripts, traceroute)
+nmap -A target.com
+
+# Script scan
+nmap -sC target.com</pre>
+                    </div>
+
+                    <h3>Stealth and Evasion Techniques</h3>
+                    <div class="code-block">
+                        <pre># FIN scan (stealthy)
+nmap -sF target.com
+
+# NULL scan
+nmap -sN target.com
+
+# Xmas scan
+nmap -sX target.com
+
+# Decoy scan
+nmap -D RND:10 target.com
+
+# Fragment packets
+nmap -f target.com</pre>
+                    </div>
+
+                    <h3>NSE (Nmap Scripting Engine)</h3>
+                    <div class="code-block">
+                        <pre># Run vulnerability scripts
+nmap --script vuln target.com
+
+# Run specific script
+nmap --script ssh-brute target.com
+
+# List available scripts
+nmap --script-help all
+
+# Update script database
+nmap --script-updatedb</pre>
+                    </div>
+
+                    <h3>Timing and Performance</h3>
+                    <div class="code-block">
+                        <pre># Timing templates (0-5, 0=paranoid, 5=insane)
+nmap -T4 target.com
+
+# Custom timing
+nmap --min-rate 1000 --max-rate 5000 target.com
+
+# Parallel scanning
+nmap --min-parallelism 100 target.com</pre>
+                    </div>
+
+                    <h2>Advanced Features</h2>
+
+                    <h3>Output Formats</h3>
+                    <div class="code-block">
+                        <pre># Normal output
+nmap -oN output.txt target.com
+
+# XML output
+nmap -oX output.xml target.com
+
+# Grepable output
+nmap -oG output.gnmap target.com
+
+# All formats
+nmap -oA output target.com</pre>
+                    </div>
+
+                    <h3>Firewall Evasion</h3>
+                    <div class="code-block">
+                        <pre># MTU discovery
+nmap --mtu 24 target.com
+
+# Source port specification
+nmap --source-port 53 target.com
+
+# Spoof MAC address
+nmap --spoof-mac Apple target.com
+
+# Use proxy
+nmap --proxies socks4://proxy:1080 target.com</pre>
+                    </div>
+
+                    <div class="warning">
+                        <h4>⚠️ Legal and Ethical Considerations</h4>
+                        <p>Always ensure you have explicit permission before scanning networks or systems you don't own. Unauthorized network scanning may be illegal in your jurisdiction and could be considered a hostile act. Use Nmap responsibly and only on systems you own or have written permission to test.</p>
+                    </div>
+
+                    <h2>Popular NSE Scripts</h2>
+                    <ul>
+                        <li><strong>http-enum:</strong> Enumerates directories used by popular web applications</li>
+                        <li><strong>smb-vuln-*:</strong> Tests for various SMB vulnerabilities</li>
+                        <li><strong>ssl-enum-ciphers:</strong> Enumerates SSL/TLS cipher suites</li>
+                        <li><strong>dns-brute:</strong> Attempts to enumerate DNS hostnames</li>
+                        <li><strong>ftp-anon:</strong> Checks if FTP server allows anonymous logins</li>
+                        <li><strong>ssh-hostkey:</strong> Shows SSH host keys</li>
+                        <li><strong>http-title:</strong> Shows title of web pages</li>
+                    </ul>
+
+                    <h2>Best Practices</h2>
+                    <ol>
+                        <li><strong>Start with host discovery</strong> before detailed port scanning</li>
+                        <li><strong>Use appropriate timing</strong> - faster isn't always better</li>
+                        <li><strong>Combine multiple scan types</strong> for comprehensive results</li>
+                        <li><strong>Save results</strong> in multiple formats for analysis</li>
+                        <li><strong>Use NSE scripts</strong> for deeper enumeration</li>
+                        <li><strong>Document your methodology</strong> for reporting</li>
+                        <li><strong>Respect rate limits</strong> to avoid detection/blocking</li>
+                        <li><strong>Verify results</strong> with manual testing when possible</li>
+                    </ol>
+
+                    <h2>Integration with Other Tools</h2>
+                    <p>Nmap integrates well with numerous other security tools:</p>
+                    <ul>
+                        <li><strong>Metasploit:</strong> Import Nmap results for exploitation</li>
+                        <li><strong>Nessus:</strong> Use Nmap for host discovery</li>
+                        <li><strong>Masscan:</strong> Combine with Nmap for large-scale scanning</li>
+                        <li><strong>Zenmap:</strong> GUI frontend for Nmap</li>
+                        <li><strong>Custom scripts:</strong> Parse XML output for automation</li>
+                    </ul>
+                </div>
+
+                <div class="sidebar">
+                    <h3>Quick Navigation</h3>
+                    <ul>
+                        <li><a href="#overview">Overview</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#usage">Usage Examples</a></li>
+                        <li><a href="#advanced">Advanced Features</a></li>
+                        <li><a href="#best-practices">Best Practices</a></li>
+                    </ul>
+
+                    <h3>Related Tools</h3>
+                    <ul>
+                        <li><a href="masscan.html">Masscan</a></li>
+                        <li><a href="shodan.html">Shodan</a></li>
+                        <li><a href="maltego.html">Maltego</a></li>
+                        <li><a href="recon-ng.html">Recon-ng</a></li>
+                    </ul>
+
+                    <h3>Categories</h3>
+                    <ul>
+                        <li><a href="../index.html#recon">Reconnaissance</a></li>
+                        <li><a href="../index.html#network">Network Security</a></li>
+                    </ul>
+
+                    <div class="info-box">
+                        <h4>Quick Stats</h4>
+                        <ul>
+                            <li><strong>Difficulty:</strong> Medium</li>
+                            <li><strong>Platform:</strong> Cross-platform</li>
+                            <li><strong>Cost:</strong> Free</li>
+                            <li><strong>Learning Curve:</strong> Moderate</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 HackBox.Space - Educational purposes only. Always follow ethical hacking guidelines.</p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>

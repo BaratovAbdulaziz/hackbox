@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Burp Suite - Web Application Security Testing | HackBox.Space</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%232563eb'><path d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z'/></svg>">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="../index.html" style="text-decoration: none; color: inherit;">
+                        <h1>HackBox.Space</h1>
+                        <span>Ethical Hacking Tools Encyclopedia</span>
+                    </a>
+                </div>
+                <div class="search-container">
+                    <input type="text" id="searchInput" placeholder="Search tools..." class="search-input">
+                    <div id="searchResults" class="search-results"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="wiki-header">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../index.html">Home</a> > <a href="../index.html#webapp">Web Application Security</a> > Burp Suite
+            </div>
+            <h1 class="wiki-title">Burp Suite</h1>
+            <p class="wiki-subtitle">The industry-standard web application security testing platform</p>
+        </div>
+    </div>
+
+    <main class="main">
+        <div class="container">
+            <div class="wiki-content">
+                <div class="content-main">
+                    <h2>Overview</h2>
+                    <p>Burp Suite is a comprehensive web application security testing platform developed by PortSwigger. It's considered the gold standard for web application penetration testing and is used by security professionals worldwide to identify and exploit web application vulnerabilities.</p>
+
+                    <div class="info-box">
+                        <h4>Key Information</h4>
+                        <ul>
+                            <li><strong>Developer:</strong> PortSwigger</li>
+                            <li><strong>License:</strong> Commercial (Professional/Enterprise) + Community Edition (Free)</li>
+                            <li><strong>Platform:</strong> Cross-platform (Java-based)</li>
+                            <li><strong>Language:</strong> Java</li>
+                            <li><strong>First Release:</strong> 2003</li>
+                        </ul>
+                    </div>
+
+                    <h2>Editions</h2>
+                    <ul>
+                        <li><strong>Community Edition (Free):</strong> Basic manual testing tools with limited features</li>
+                        <li><strong>Professional Edition:</strong> Full-featured with automated scanning and advanced tools</li>
+                        <li><strong>Enterprise Edition:</strong> Scalable solution for large organizations with CI/CD integration</li>
+                    </ul>
+
+                    <h2>Core Components</h2>
+
+                    <h3>Proxy</h3>
+                    <p>The heart of Burp Suite, acting as an intercepting proxy between your browser and target applications.</p>
+                    <div class="code-block">
+                        <pre># Configure proxy settings
+Default proxy: 127.0.0.1:8080
+
+# Browser proxy configuration required
+# Install Burp CA certificate for HTTPS interception</pre>
+                    </div>
+
+                    <h3>Target</h3>
+                    <p>Displays detailed information about applications and their structure.</p>
+
+                    <h3>Spider/Crawler</h3>
+                    <p>Automatically discovers content and functionality by crawling the application.</p>
+                    <div class="code-block">
+                        <pre># Spider configuration
+1. Add target to scope
+2. Configure crawl settings
+3. Start spider from Target tab
+4. Review discovered content</pre>
+                    </div>
+
+                    <h3>Scanner (Professional/Enterprise)</h3>
+                    <p>Automated vulnerability scanner that identifies common web application security issues.</p>
+
+                    <h3>Intruder</h3>
+                    <p>Powerful tool for automated customized attacks against web applications.</p>
+                    <div class="code-block">
+                        <pre># Intruder attack types:
+1. Sniper - Single payload set
+2. Battering ram - Same payload in all positions  
+3. Pitchfork - Multiple payload sets, parallel
+4. Cluster bomb - All payload combinations</pre>
+                    </div>
+
+                    <h3>Repeater</h3>
+                    <p>Allows manual manipulation and reissuing of individual HTTP requests.</p>
+
+                    <h3>Sequencer</h3>
+                    <p>Analyzes the randomness of session tokens and similar data.</p>
+
+                    <h3>Decoder</h3>
+                    <p>Transforms data using common encoding schemes.</p>
+
+                    <h3>Comparer</h3>
+                    <p>Visual comparison tool for analyzing differences between data items.</p>
+
+                    <h2>Common Workflows</h2>
+
+                    <h3>Basic Manual Testing</h3>
+                    <div class="code-block">
+                        <pre>1. Configure proxy settings (127.0.0.1:8080)
+2. Install Burp CA certificate in browser
+3. Browse target application normally
+4. Review HTTP history in Proxy tab
+5. Send interesting requests to Repeater
+6. Modify and replay requests
+7. Analyze responses for vulnerabilities</pre>
+                    </div>
+
+                    <h3>Automated Scanning (Professional)</h3>
+                    <div class="code-block">
+                        <pre>1. Add target to scope
+2. Spider the application to map content
+3. Configure scanner settings
+4. Start active/passive scanning
+5. Review and validate findings
+6. Generate vulnerability reports</pre>
+                    </div>
+
+                    <h3>Advanced Attack Scenarios</h3>
+                    <div class="code-block">
+                        <pre># SQL Injection Testing
+1. Capture login request in Proxy
+2. Send to Intruder
+3. Mark injection points with §§
+4. Load SQL injection payloads
+5. Start attack and analyze responses
+
+# Session Token Analysis
+1. Capture multiple session tokens
+2. Send to Sequencer
+3. Analyze randomness and entropy
+4. Identify predictable patterns</pre>
+                    </div>
+
+                    <h2>Key Features</h2>
+
+                    <h3>Proxy Interception</h3>
+                    <ul>
+                        <li>Real-time HTTP/HTTPS traffic interception</li>
+                        <li>Request/response modification</li>
+                        <li>SSL/TLS certificate handling</li>
+                        <li>WebSocket support</li>
+                    </ul>
+
+                    <h3>Vulnerability Detection</h3>
+                    <ul>
+                        <li>SQL injection</li>
+                        <li>Cross-site scripting (XSS)</li>
+                        <li>Cross-site request forgery (CSRF)</li>
+                        <li>XML external entity (XXE)</li>
+                        <li>Server-side request forgery (SSRF)</li>
+                        <li>Insecure deserialization</li>
+                        <li>Directory traversal</li>
+                        <li>Authentication bypass</li>
+                    </ul>
+
+                    <h3>Advanced Capabilities</h3>
+                    <ul>
+                        <li>Macro recording and playback</li>
+                        <li>Session handling rules</li>
+                        <li>Custom payload processing</li>
+                        <li>Extension development (BApp Store)</li>
+                        <li>Collaboration features</li>
+                        <li>REST API integration</li>
+                    </ul>
+
+                    <h2>Popular Extensions</h2>
+                    <ul>
+                        <li><strong>Logger++:</strong> Advanced logging and grep functionality</li>
+                        <li><strong>Autorize:</strong> Automated authorization testing</li>
+                        <li><strong>Active Scan++:</strong> Additional active scan checks</li>
+                        <li><strong>Param Miner:</strong> Parameter discovery</li>
+                        <li><strong>J2EEScan:</strong> J2EE security testing</li>
+                        <li><strong>CO2:</strong> SQLite interface for Burp data</li>
+                        <li><strong>Turbo Intruder:</strong> High-speed content discovery</li>
+                    </ul>
+
+                    <div class="warning">
+                        <h4>⚠️ Legal and Ethical Considerations</h4>
+                        <p>Burp Suite should only be used against applications you own or have explicit permission to test. Unauthorized testing of web applications may violate laws and terms of service. Always ensure you have proper authorization before conducting security assessments.</p>
+                    </div>
+
+                    <h2>Configuration Tips</h2>
+
+                    <h3>Proxy Setup</h3>
+                    <div class="code-block">
+                        <pre># Browser proxy settings
+HTTP Proxy: 127.0.0.1:8080
+HTTPS Proxy: 127.0.0.1:8080
+
+# Firefox proxy settings
+Preferences > Network Settings > Manual proxy configuration
+
+# Chrome proxy extension
+Use extensions like FoxyProxy for easy switching</pre>
+                    </div>
+
+                    <h3>Scope Configuration</h3>
+                    <div class="code-block">
+                        <pre># Target scope best practices
+1. Add specific URLs/domains to scope
+2. Exclude out-of-scope domains
+3. Use regex for complex scope definitions
+4. Configure suite-wide scope settings</pre>
+                    </div>
+
+                    <h2>Integration with Other Tools</h2>
+                    <ul>
+                        <li><strong>OWASP ZAP:</strong> Complementary testing approach</li>
+                        <li><strong>Nmap:</strong> Network discovery before web testing</li>
+                        <li><strong>SQLmap:</strong> Advanced SQL injection testing</li>
+                        <li><strong>Metasploit:</strong> Exploitation of discovered vulnerabilities</li>
+                        <li><strong>BeEF:</strong> Browser exploitation integration</li>
+                    </ul>
+
+                    <h2>Best Practices</h2>
+                    <ol>
+                        <li><strong>Configure scope properly</strong> to avoid testing unintended targets</li>
+                        <li><strong>Use project files</strong> to organize testing sessions</li>
+                        <li><strong>Regular backups</strong> of important project data</li>
+                        <li><strong>Validate automated findings</strong> manually</li>
+                        <li><strong>Document methodologies</strong> and findings thoroughly</li>
+                        <li><strong>Keep Burp updated</strong> for latest vulnerability checks</li>
+                        <li><strong>Use extensions</strong> to enhance functionality</li>
+                        <li><strong>Practice responsible disclosure</strong> of findings</li>
+                    </ol>
+
+                    <h2>Learning Resources</h2>
+                    <ul>
+                        <li><strong>Web Security Academy:</strong> Free training by PortSwigger</li>
+                        <li><strong>Burp Suite Documentation:</strong> Official guides and tutorials</li>
+                        <li><strong>YouTube Channels:</strong> PentesterLab, Hak5</li>
+                        <li><strong>Practice Labs:</strong> DVWA, WebGoat, PortSwigger Labs</li>
+                        <li><strong>Bug Bounty Platforms:</strong> HackerOne, Bugcrowd</li>
+                    </ul>
+                </div>
+
+                <div class="sidebar">
+                    <h3>Quick Navigation</h3>
+                    <ul>
+                        <li><a href="#overview">Overview</a></li>
+                        <li><a href="#components">Core Components</a></li>
+                        <li><a href="#workflows">Common Workflows</a></li>
+                        <li><a href="#features">Key Features</a></li>
+                        <li><a href="#best-practices">Best Practices</a></li>
+                    </ul>
+
+                    <h3>Related Tools</h3>
+                    <ul>
+                        <li><a href="owasp-zap.html">OWASP ZAP</a></li>
+                        <li><a href="nikto.html">Nikto</a></li>
+                        <li><a href="sqlmap.html">SQLmap</a></li>
+                        <li><a href="wfuzz.html">Wfuzz</a></li>
+                    </ul>
+
+                    <h3>Categories</h3>
+                    <ul>
+                        <li><a href="../index.html#webapp">Web Application Security</a></li>
+                        <li><a href="../index.html#exploitation">Exploitation</a></li>
+                    </ul>
+
+                    <div class="info-box">
+                        <h4>Quick Stats</h4>
+                        <ul>
+                            <li><strong>Difficulty:</strong> Medium-High</li>
+                            <li><strong>Platform:</strong> Cross-platform</li>
+                            <li><strong>Cost:</strong> Free/Commercial</li>
+                            <li><strong>Learning Curve:</strong> Steep</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 HackBox.Space - Educational purposes only. Always follow ethical hacking guidelines.</p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>

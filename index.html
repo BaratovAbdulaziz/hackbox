@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HackBox.Space - Ethical Hacking Tools Wiki</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%232563eb'><path d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z'/></svg>">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1>HackBox.Space</h1>
+                    <span>Ethical Hacking Tools Encyclopedia</span>
+                </div>
+                <div class="search-container">
+                    <input type="text" id="searchInput" placeholder="Search tools..." class="search-input">
+                    <div id="searchResults" class="search-results"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <div class="hero">
+                <h2>The Complete Guide to Ethical Hacking Tools</h2>
+                <p>Comprehensive documentation and guides for 50+ essential cybersecurity tools used by ethical hackers, penetration testers, and security professionals worldwide.</p>
+            </div>
+
+            <div class="categories-grid">
+                <div class="category-card recon">
+                    <div class="category-header">
+                        <h3>🔍 Reconnaissance & Information Gathering</h3>
+                        <span class="tool-count">10 tools</span>
+                    </div>
+                    <p>Tools for gathering intelligence and mapping target infrastructure</p>
+                    <div class="tool-list">
+                        <a href="tools/nmap.html" class="tool-link">Nmap</a>
+                        <a href="tools/masscan.html" class="tool-link">Masscan</a>
+                        <a href="tools/shodan.html" class="tool-link">Shodan</a>
+                        <a href="tools/maltego.html" class="tool-link">Maltego</a>
+                        <a href="tools/recon-ng.html" class="tool-link">Recon-ng</a>
+                        <a href="tools/theharvester.html" class="tool-link">theHarvester</a>
+                        <a href="tools/amass.html" class="tool-link">Amass</a>
+                        <a href="tools/foca.html" class="tool-link">FOCA</a>
+                        <a href="tools/spiderfoot.html" class="tool-link">SpiderFoot</a>
+                        <a href="tools/sublist3r.html" class="tool-link">Sublist3r</a>
+                    </div>
+                </div>
+
+                <div class="category-card password">
+                    <div class="category-header">
+                        <h3>🔑 Password Cracking & Authentication</h3>
+                        <span class="tool-count">5 tools</span>
+                    </div>
+                    <p>Tools for testing password strength and authentication mechanisms</p>
+                    <div class="tool-list">
+                        <a href="tools/john-the-ripper.html" class="tool-link">John the Ripper</a>
+                        <a href="tools/hashcat.html" class="tool-link">Hashcat</a>
+                        <a href="tools/hydra.html" class="tool-link">Hydra</a>
+                        <a href="tools/medusa.html" class="tool-link">Medusa</a>
+                        <a href="tools/crackmapexec.html" class="tool-link">CrackMapExec</a>
+                    </div>
+                </div>
+
+                <div class="category-card webapp">
+                    <div class="category-header">
+                        <h3>🌐 Web Application Security</h3>
+                        <span class="tool-count">10 tools</span>
+                    </div>
+                    <p>Tools for testing web application security vulnerabilities</p>
+                    <div class="tool-list">
+                        <a href="tools/burp-suite.html" class="tool-link">Burp Suite</a>
+                        <a href="tools/owasp-zap.html" class="tool-link">OWASP ZAP</a>
+                        <a href="tools/nikto.html" class="tool-link">Nikto</a>
+                        <a href="tools/wfuzz.html" class="tool-link">Wfuzz</a>
+                        <a href="tools/sqlmap.html" class="tool-link">SQLmap</a>
+                        <a href="tools/xsstrike.html" class="tool-link">XSStrike</a>
+                        <a href="tools/gobuster.html" class="tool-link">Gobuster</a>
+                        <a href="tools/dirb.html" class="tool-link">Dirb</a>
+                        <a href="tools/dirbuster.html" class="tool-link">Dirbuster</a>
+                        <a href="tools/arachni.html" class="tool-link">Arachni</a>
+                    </div>
+                </div>
+
+                <div class="category-card wireless">
+                    <div class="category-header">
+                        <h3>📡 Wireless & Network Security</h3>
+                        <span class="tool-count">8 tools</span>
+                    </div>
+                    <p>Tools for wireless network analysis and security testing</p>
+                    <div class="tool-list">
+                        <a href="tools/aircrack-ng.html" class="tool-link">Aircrack-ng</a>
+                        <a href="tools/kismet.html" class="tool-link">Kismet</a>
+                        <a href="tools/wireshark.html" class="tool-link">Wireshark</a>
+                        <a href="tools/bettercap.html" class="tool-link">Bettercap</a>
+                        <a href="tools/reaver.html" class="tool-link">Reaver</a>
+                        <a href="tools/fern-wifi-cracker.html" class="tool-link">Fern WiFi Cracker</a>
+                        <a href="tools/wifite.html" class="tool-link">Wifite</a>
+                        <a href="tools/scapy.html" class="tool-link">Scapy</a>
+                    </div>
+                </div>
+
+                <div class="category-card exploitation">
+                    <div class="category-header">
+                        <h3>🎭 Exploitation Frameworks</h3>
+                        <span class="tool-count">5 tools</span>
+                    </div>
+                    <p>Comprehensive frameworks for vulnerability exploitation</p>
+                    <div class="tool-list">
+                        <a href="tools/metasploit.html" class="tool-link">Metasploit Framework</a>
+                        <a href="tools/beef.html" class="tool-link">BeEF</a>
+                        <a href="tools/set.html" class="tool-link">SET</a>
+                        <a href="tools/empire.html" class="tool-link">Empire</a>
+                        <a href="tools/covenant.html" class="tool-link">Covenant</a>
+                    </div>
+                </div>
+
+                <div class="category-card postexploit">
+                    <div class="category-header">
+                        <h3>🛡 Post-Exploitation & Privilege Escalation</h3>
+                        <span class="tool-count">6 tools</span>
+                    </div>
+                    <p>Tools for maintaining access and escalating privileges</p>
+                    <div class="tool-list">
+                        <a href="tools/mimikatz.html" class="tool-link">Mimikatz</a>
+                        <a href="tools/powersploit.html" class="tool-link">PowerSploit</a>
+                        <a href="tools/linpeas.html" class="tool-link">LinPEAS</a>
+                        <a href="tools/winpeas.html" class="tool-link">WinPEAS</a>
+                        <a href="tools/bloodhound.html" class="tool-link">BloodHound</a>
+                    </div>
+                </div>
+
+                <div class="category-card forensics">
+                    <div class="category-header">
+                        <h3>🔒 Forensics & Reverse Engineering</h3>
+                        <span class="tool-count">5 tools</span>
+                    </div>
+                    <p>Tools for digital forensics and reverse engineering</p>
+                    <div class="tool-list">
+                        <a href="tools/autopsy.html" class="tool-link">Autopsy</a>
+                        <a href="tools/volatility.html" class="tool-link">Volatility</a>
+                        <a href="tools/radare2.html" class="tool-link">Radare2</a>
+                        <a href="tools/ghidra.html" class="tool-link">Ghidra</a>
+                        <a href="tools/ollydbg.html" class="tool-link">OllyDbg</a>
+                    </div>
+                </div>
+
+                <div class="category-card cloud">
+                    <div class="category-header">
+                        <h3>☁ Cloud & Miscellaneous Security</h3>
+                        <span class="tool-count">2 tools</span>
+                    </div>
+                    <p>Tools for cloud security and specialized security testing</p>
+                    <div class="tool-list">
+                        <a href="tools/cloudsploit.html" class="tool-link">CloudSploit</a>
+                        <a href="tools/scoutsuite.html" class="tool-link">ScoutSuite</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stats-section">
+                <div class="stat-card">
+                    <h3>50+</h3>
+                    <p>Security Tools</p>
+                </div>
+                <div class="stat-card">
+                    <h3>8</h3>
+                    <p>Categories</p>
+                </div>
+                <div class="stat-card">
+                    <h3>100%</h3>
+                    <p>Open Source</p>
+                </div>
+                <div class="stat-card">
+                    <h3>2025</h3>
+                    <p>Updated</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 HackBox.Space - Educational purposes only. Always follow ethical hacking guidelines.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
